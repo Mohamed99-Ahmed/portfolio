@@ -2,20 +2,144 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer components{
+  /*scoll for use for all browser */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px; /* for horizontal scrollbar */
+  border-radius: 30px;
+}
+::-webkit-scrollbar-track {
+  background: #722c2c; /* Light background for the track */
+  border-radius: 30px;
+}
+::-webkit-scrollbar-thumb {
+  background: #31C38E; /* Scrollbar thumb color */
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #31C38E; /* Hover color */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/*! start gloabal style*/
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* overflow hidden untill header animation then i will overflow in header page */
+  overflow-x: hidden;
+  overflow: hidden;
+}
+
+  html{
+    scroll-behavior: smooth ;
+    scrollbar-width: thin;
+    border-radius: 30px;
+  scrollbar-color: #31C38E #120D16; /* thumb and track color */
+  }
+    main{
+  background-image: 
+    linear-gradient(to right, #204F16 0.01px, transparent 1px),
+    linear-gradient(to bottom, #204F16 0.01px, transparent 1px);
+  background-size: 30px 30px; /* حجم الخلايا */
+    }
+    section{
+        padding-block:3rem;
+    }
+ /*! skills section */
+    .skills img{
+        opacity: 0;
+        filter:blur(1rem);
+    }
+    .skills .parent { 
+         display: grid;
+        
+        grid-template-columns: repeat(13, 1fr);
+        grid-template-rows: repeat(7, 8fr) ;
+        gap: 0.5rem;
+        grid-auto-flow: row;
+        grid-template-areas:
+          ". html html html . . . . . css css css ."
+          ". html html html . next next . . css css css ."
+          ". . . . boot boot . . . . . git git"
+          "ts ts header header header header header header header header header js js"
+          ". . header header header header header header header header header js js"
+          ". react react . . .  redux redux . tailwind tailwind . ."
+          ". react react . . . redux redux . . . . .";
+         
+      }
+      
+      .html { grid-area: html; }
+      
+      .css { grid-area: css; }
+      
+      .next { grid-area: next; }
+      
+      .react { grid-area: react; }
+      
+      .tailwind { grid-area: tailwind; }
+      
+      .ts { grid-area: ts;  }
+      
+      .js { grid-area: js; }
+      
+      .redux { grid-area: redux; }
+      
+      .header { grid-area: header; }
+      
+      .boot { grid-area: boot; }
+      
+      .git { grid-area: git; }
+
+    /*! contact scetion */
+      #contact .links > div a{
+        
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius: 0.5rem;
+        cursor:pointer
+      }
+      .links .github{
+        width:25%;
+      }
+      .links .linkedin{
+        width: 75%;
+      }
+      .links .phone,
+      .links:has(.phone:hover) .gamil{
+        width: 40%;
+      }
+      .links .gmail,
+      .links .phone:hover{
+        width: 60%;
+      }
+      /* hovering in github */
+      .links .github:hover{
+        width: 50%;
+    }
+    .links:has( .github:hover) .col-1,
+    .links:has(.linkedin:hover) .col-1{
+      height: 85%;
+    }
+    .links:has( .github:hover) .col-2,
+    .links:has(.linkedin:hover) .col-2{
+      height: 15%;
+    }
+      .links:has( .github:hover) .linkedin{
+        width : 50%;
+      }
+     /* hovre linkedin */
+     .links .linkedin:hover,
+     .links .gmail:hover{
+       width:85%;
+     }
+     .links:has(.phone:hover) .col-1,
+     .links:has(.phone:hover) .col-2,
+     .links:has(.gmail:hover) .col-1,
+     .links:has(.gmail:hover) .col-2
+     {
+       height: 50%;
+     }
+     .links:has(.gmail:hover) .phone{
+      width:15%;
+     }
 }
