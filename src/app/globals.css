@@ -27,9 +27,14 @@ body {
   /* overflow hidden untill header animation then i will overflow in header page */
   overflow-x: hidden;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
   html{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     scroll-behavior: smooth ;
     scrollbar-width: thin;
     border-radius: 30px;
@@ -43,6 +48,9 @@ body {
     }
     section{
         padding-block:3rem;
+    }
+    img{
+      max-width: 100%;
     }
  /*! skills section */
     .skills img{
