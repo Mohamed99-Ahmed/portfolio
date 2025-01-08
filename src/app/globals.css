@@ -23,13 +23,11 @@
 }
 
 /*! start gloabal style*/
-body {
-  /* overflow hidden untill header animation then i will overflow in header page */
-  overflow-x: hidden;
-  overflow: hidden;
-}
+
 
   html{
+    overflow-x: hidden;
+    overflow: hidden;
     scroll-behavior: smooth ;
     scrollbar-width: thin;
     border-radius: 30px;

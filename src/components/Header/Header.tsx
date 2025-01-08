@@ -16,7 +16,7 @@ export default function Header() {
           const tl = gsap.timeline({
             // Enable body scrolling of y axiis once the animation is finished
             onComplete: () => {
-              document.body.style.overflowY = 'scroll'; // Or 'scroll'
+              document.documentElement.style.overflowY = 'scroll'; // Or 'scroll'
             },
           });
           // display animation vertaially arrangment
