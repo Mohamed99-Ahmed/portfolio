@@ -17,6 +17,7 @@ export default function Header() {
             // Enable body scrolling of y axiis once the animation is finished
             onComplete: () => {
               document.documentElement.style.overflowY = 'scroll'; // Or 'scroll'
+              document.body.style.overflowY = 'scroll'; // Or 'scroll'
             },
           });
           // display animation vertaially arrangment

@@ -23,7 +23,11 @@
 }
 
 /*! start gloabal style*/
-
+body {
+  /* overflow hidden untill header animation then i will overflow in header page */
+  overflow-x: hidden;
+  overflow: hidden;
+} 
 
   html{
     overflow-x: hidden;
