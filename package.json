@@ -1,12 +1,12 @@
 {
   "name": "portfolio",
-  "homepage": "https://Mohamed99-Ahmed.github.io",
+  "homepage": "https://Mohamed99-Ahmed.github.io/portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "predeploy": "next build && next export", 
+    "deploy": "gh-pages -d out", 
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
