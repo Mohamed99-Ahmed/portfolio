@@ -1,6 +1,5 @@
 import { Geist } from "next/font/google"; // Importing Geist font from next/font/google
 import './globals.css';
-import icon from "../../public/imgs/profile.jpeg"
 
 
 // Load Geist font using Next.js font optimization
@@ -27,7 +26,6 @@ export default function RootLayout({
         {/* Preconnect to Google's font servers for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link rel="shortcut icon" href={icon} type="image/x-icon" />
       </head>
       <body className={`${geist.className} bg-back text-gray-200`}> {/* Apply the Geist font globally */}
         {children}

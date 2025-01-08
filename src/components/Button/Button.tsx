@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
-export default function Button({children,className}:{children:any,className?:string}):React.ReactElement {
+export default function Button({children,className}:{children:string|ReactElement,className?:string}):React.ReactElement {
   return (
    /* From Uiverse.io by Itskrish01 */ 
 <button

@@ -15,7 +15,7 @@ import skill7 from "../../../public/imgs/skill-7.png"
 import skill8 from "../../../public/imgs/skill-8.png"
 import skill9 from "../../../public/imgs/skill-9.png"
 import skill10 from "../../../public/imgs/skill-10.png"
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 import Title from '../Title/Title';
@@ -23,9 +23,9 @@ import Title from '../Title/Title';
 type  project = {
     name:string,
     description:string,
-    src:any,
+    src:(StaticImageData | string),
     alt:string,
-    tools:any[],
+    tools:(StaticImageData | string)[],
     link:string
 
 }
