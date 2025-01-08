@@ -27,14 +27,9 @@ body {
   /* overflow hidden untill header animation then i will overflow in header page */
   overflow-x: hidden;
   overflow: hidden;
-  width: 100%;
-  max-width: 100%;
 }
 
   html{
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
     scroll-behavior: smooth ;
     scrollbar-width: thin;
     border-radius: 30px;
@@ -48,9 +43,6 @@ body {
     }
     section{
         padding-block:3rem;
-    }
-    img{
-      max-width: 100%;
     }
  /*! skills section */
     .skills img{
@@ -150,4 +142,18 @@ body {
      .links:has(.gmail:hover) .phone{
       width:15%;
      }
+      /* hovering in every icons in css */
+      /* .github:hover{
+        grid-column:span 4;
+        grid-row:span 5;
+        background-color: aqua;
+      }
+      .links:has(.github:hover) .linkedin{
+        grid-column:span 5;
+        grid-row:span 5;
+      }
+      .links:has(.github:hover) .phone,
+      .links:has(.github:hover) .gmail{
+        grid-row:span 1;
+      } */
 }
