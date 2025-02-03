@@ -6,11 +6,13 @@ import project2 from "../../../public/imgs/project-2.png"
 import project3 from "../../../public/imgs/project-3.png"
 import project4 from "../../../public/imgs/project-4.png"
 import project5 from "../../../public/imgs/project-5.png"
+import project6 from "../../../public/imgs/project-6.png"
 // skills
 import skill1 from "../../../public/imgs/skill-1.png"
 import skill3 from "../../../public/imgs/skill-3.png"
 import skill4 from "../../../public/imgs/skill-4.png"
 import skill5 from "../../../public/imgs/skill-5.png"
+import skill6 from "../../../public/imgs/skill-6.png"
 import skill7 from "../../../public/imgs/skill-7.png"
 import skill8 from "../../../public/imgs/skill-8.png"
 import skill9 from "../../../public/imgs/skill-9.png"
@@ -40,6 +42,15 @@ const projects:project[] = [
         link : `https://mohamed99-ahmed.github.io/Buy-Ecommerce/`,
     }
 ,
+{  
+    name:"Twitaty",
+   description:"Twiatay website is a social app website that all peple can share imgs and post with communication with us .",
+   src : project6,
+   alt:"Twitaty social app",
+    tools:[skill6,skill5,skill8,skill9],
+    link:"https://twitaty-1v70yaowx-mohamed99-ahmeds-projects.vercel.app/"
+
+},
     {  
          name:"Fahmny quran", 
         description:`Website That give you Random aya form quran and with tafser , and page of specific surah you want with its tafseer.Built with : React(state Mangment by Redux), Tailwind`,
@@ -73,7 +84,7 @@ const projects:project[] = [
         tools:[skill1,skill3,skill9,skill10],
         link:"https://mohamed99-ahmed.github.io/Meals/"
     },
-
+    
 ]
 
 export default function Projects() {
