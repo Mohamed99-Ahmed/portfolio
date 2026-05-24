@@ -8,7 +8,7 @@ export default function Button({children,className,onClick}:{children:string|Rea
   className={`relative text-2xl cursor-pointer inline-flex h-12 active:scale-95 transistion overflow-hidden rounded-lg p-[1px] focus:outline-none ${className}`}
 >
   <span
-    className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#31c38e_0%,#9CA3AF_50%,#7B52A1_100%)]"
+    className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FBBF24_0%,#9CA3AF_50%,#7B52A1_100%)]"
   >
   </span>
   <span

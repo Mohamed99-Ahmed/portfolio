@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import skill1 from "../../../public/imgs/skill-1.png";
 import skill2 from "../../../public/imgs/skill-2.png";
 import skill3 from "../../../public/imgs/skill-3.png";
@@ -11,180 +11,158 @@ import skill7 from "../../../public/imgs/skill-7.png";
 import skill8 from "../../../public/imgs/skill-8.png";
 import skill9 from "../../../public/imgs/skill-9.png";
 import skill10 from "../../../public/imgs/skill-10.png";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import gsap from "gsap";
+import { SiMongodb, SiNodedotjs, SiExpress } from "react-icons/si";
+import { gsap } from "@/lib/gsap";
 import Title from "../Title/Title";
 
+const skills = [
+  { src: skill1, alt: "html", group: 0 },
+  { src: skill2, alt: "css", group: 0 },
+  { src: skill6, alt: "next", group: 2 },
+  { src: skill4, alt: "react", group: 2 },
+  { src: skill9, alt: "tailwind", group: 3 },
+  { src: skill7, alt: "bootstrap", group: 3 },
+  { src: skill10, alt: "git", group: 4 },
+  { src: skill5, alt: "typescript", group: 1 },
+  { src: skill3, alt: "javascript", group: 1 },
+  { src: skill8, alt: "redux", group: 4 },
+  { icon: SiMongodb, alt: "mongodb", group: 5 },
+  { icon: SiNodedotjs, alt: "nodejs", group: 5 },
+  { icon: SiExpress, alt: "express", group: 5 },
+];
+
+const skillClasses = [
+  "html", "css", "next", "react",
+  "tailwind", "boot", "git", "ts", "js", "redux",
+  "mongo", "node", "express",
+];
 
 export default function Skills() {
-    useEffect(()=>{
-      // make context gsap then i will remove in unmount phase
-        gsap.registerPlugin(ScrollTrigger);
-        const cts = gsap.context(()=>{
-            const tl = gsap.timeline({
-                    defaults: {
-                        opacity: 1,
-                        filter: "blur(0)",
-                        duration: 2,
-                        yoyo: true,
-                      },
-            });
-            tl.to(".dis-1", {
-                scrollTrigger: {
-                  trigger: ".dis-1",
-                  start: "50% 80%",
-                  pin:true,
-                 end:"100% 80%",
-                //   markers: true,
-                  toggleActions: "play pause resume reset",
-                  scrub: true,
-                },
-              });
-              tl.to(".dis-2", {
-                scrollTrigger: {
-                  trigger: ".dis-2",
-                  start: "50% 80%",
-                  pin:true,
-                 end:"100% 80%",
-                //   markers: true,
-                  toggleActions: "play pause resume reset",
-                  scrub: true,
-                },
-              });
-              tl.to(".dis-3", {
-                scrollTrigger: {
-                  trigger: ".dis-3",
-                  start: "50% 80%",
-                  pin:true,
-                 end:"100% 80%",
-                //   markers: true,
-                  toggleActions: "play pause resume reset",
-                  scrub: true,
-                },
-              });
-              tl.to(".dis-4", {
-                scrollTrigger: {
-                  trigger: ".dis-4",
-                  start: "50% 80%",
-                  pin:true,
-                 end:"100% 80%",
-                //   markers: true,
-                  toggleActions: "play pause resume reset",
-                  scrub: true,
-                },
-              });
-              tl.to(".dis-5", {
-                scrollTrigger: {
-                  trigger: ".dis-5",
-                  start: "50% 80%",
-                  pin:true,
-                 end:"100% 80%",
-                //   markers: true,
-                  toggleActions: "play pause resume reset",
-                  scrub: true,
-                },
-              });
+  const sectionRef = useRef<HTMLElement>(null);
+  const figuresRef = useRef<(HTMLElement | null)[]>([]);
 
-        })
-        // remove context of animation by gsap from browser when unmount component
-        return ()=>cts.revert();
-    },[])
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+
+      const activeGroups: { elements: HTMLElement[]; group: number }[] = [];
+
+      figuresRef.current.forEach((fig, i) => {
+        if (!fig) return;
+        const group = skills[i]?.group ?? 0;
+        let ag = activeGroups.find(g => g.group === group);
+        if (!ag) {
+          ag = { elements: [], group };
+          activeGroups.push(ag);
+        }
+        ag.elements.push(fig);
+      });
+
+      activeGroups.forEach((ag, idx) => {
+        const startOffset = 30 + idx * 15;
+        gsap.fromTo(ag.elements,
+          { opacity: 0, scale: 0.3, filter: "blur(1rem)" },
+          {
+            opacity: 1, scale: 1, filter: "blur(0)",
+            duration: 1.2,
+            stagger: 0.15,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+              trigger: section,
+              start: `${startOffset}% bottom`,
+              end: `${startOffset + 15}% bottom`,
+              scrub: 1.5,
+            },
+          }
+        );
+      });
+
+      figuresRef.current.forEach((fig) => {
+        if (!fig) return;
+        gsap.to(fig, {
+          y: -4 + Math.random() * 8,
+          rotation: -1 + Math.random() * 2,
+          duration: 2 + Math.random() * 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: Math.random() * 2,
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      figuresRef.current.forEach((fig) => {
+        if (!fig) return;
+
+        const onMove = (e: MouseEvent) => {
+          const rect = fig!.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          gsap.to(fig, {
+            rotationY: x * 15,
+            rotationX: y * -15,
+            scale: 1.1,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        };
+
+        const onLeave = () => {
+          gsap.to(fig, {
+            rotationY: 0,
+            rotationX: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: "power3.out",
+          });
+        };
+
+        fig.addEventListener("mousemove", onMove);
+        fig.addEventListener("mouseleave", onLeave);
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="skills"
-      className="skills container flex items-center justify-center h-screen sm:h-[110vh] md:h-[150vh]"
+      className="skills container flex items-center justify-center min-h-screen py-24"
     >
-      <article className="h-full parent gap-2 ">
-        {/* title of skills component */}
-      <Title className="title ">skills</Title>
-          {/* all of figures of skills */}
-        <>
-        <figure className="html ">
-          <Image src={skill1} alt="html image  " className="dis-1" width={100}
-           />
-        </figure>
-        <figure className="css">
-          <Image
-            src={skill2}
-            alt="css image"
-            className=" dis-1 "
-            width={100}
-            
-          />
-        </figure>
-        <figure className="next">
-          <Image
-            src={skill6}
-            alt="next "
-            className=" dis-3"
-            width={100}
-            
-          />
-        </figure>
-        <figure className="react">
-          <Image
-            src={skill4}
-            alt="react "
-            className=" sikill-4 dis-3"
-            width={100}
-            
-          />
-        </figure>
-        <figure className="tailwind">
-          <Image
-            src={skill9}
-            alt="tailwind image"
-            className="w-full dis-4"
-            width={100}
-            
-          />
-        </figure>
-        <figure className="boot">
-          <Image
-            src={skill7}
-            alt="redux image"
-            className="w-full dis-4"
-            width={100}
-            
-          />
-          </figure>
-        <figure className="git">
-          <Image
-            src={skill10}
-            alt="git image"
-            className="w-full dis-5"
-            width={100}
-            
-          />
-        </figure>
-        <figure className="ts">
-          <Image
-            src={skill5}
-            alt="typescript image"
-            className=" skill-5 dis-2"
-            width={100}
-            
-          />
-        </figure>
-        <figure className="js ">
-          <Image
-            src={skill3}
-            alt=" javascript image"
-            className=" dis-2"
-            width={100}
-            
-          />
-        </figure>
-        <figure className="redux">
-          <Image
-            src={skill8}
-            alt="redux image"
-            className="w-full dis-5"
-            width={100}
-            
-          />
-        </figure>
-        </>
+      <article className="h-full parent gap-2">
+        <Title className="title">skills</Title>
+        {skillClasses.map((cls, i) => {
+          const skill = skills[i];
+          if (!skill) return null;
+          return (
+            <figure
+              key={i}
+              ref={(el) => { figuresRef.current[i] = el; }}
+              className={`${cls} flex items-center justify-center`}
+              style={{ perspective: "600px" }}
+            >
+              {'src' in skill ? (
+                <Image
+                  src={skill.src}
+                  alt={skill.alt}
+                  className="w-16 md:w-20 cursor-pointer"
+                  width={80}
+                />
+              ) : (
+                <skill.icon className="w-12 h-12 md:w-16 md:h-16 text-scolor cursor-pointer" />
+              )}
+            </figure>
+          );
+        })}
       </article>
     </section>
   );

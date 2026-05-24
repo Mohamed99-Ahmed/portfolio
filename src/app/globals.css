@@ -3,156 +3,173 @@
 @tailwind utilities;
 
 @layer components{
-  /*scoll for use for all browser */
+
 ::-webkit-scrollbar {
   width: 12px;
-  height: 12px; /* for horizontal scrollbar */
+  height: 12px;
   border-radius: 30px;
 }
 ::-webkit-scrollbar-track {
-  background: #722c2c; /* Light background for the track */
+  background: #120D16;
   border-radius: 30px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #31C38E; /* Scrollbar thumb color */
+  background: #FBBF24;
   border-radius: 30px;
   transition: background 0.3s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #31C38E; /* Hover color */
+  background: #F59E0B;
 }
 
-/*! start gloabal style*/
 body {
   overflow-x: hidden;
-} 
+}
 
   html{
     overflow-x: hidden;
-    scroll-behavior: smooth ;
     scrollbar-width: thin;
     border-radius: 30px;
-  scrollbar-color: #31C38E #120D16; /* thumb and track color */
+    scrollbar-color: #FBBF24 #120D16;
   }
-    main{
-  background-image: 
-    linear-gradient(to right, #204F16 0.01px, transparent 1px),
-    linear-gradient(to bottom, #204F16 0.01px, transparent 1px);
-  background-size: 30px 30px; /* حجم الخلايا */
-    }
-    section{
-        padding-block:3rem;
-    }
- /*! skills section */
-    .skills img{
-        opacity: 0;
-        filter:blur(1rem);
-    }
-    .skills .parent { 
-         display: grid;
-        
-        grid-template-columns: repeat(13, 1fr);
-        grid-template-rows: repeat(7, 8fr) ;
-        gap: 0.5rem;
-        grid-auto-flow: row;
-        grid-template-areas:
-          ". html html html . . . . . css css css ."
-          ". html html html . next next . . css css css ."
-          ". . . . boot boot . . . . . git git"
-          "ts ts header header header header header header header header header js js"
-          ". . header header header header header header header header header js js"
-          ". react react . . .  redux redux . tailwind tailwind . ."
-          ". react react . . . redux redux . . . . .";
-         
-      }
-      
-      .html { grid-area: html; }
-      
-      .css { grid-area: css; }
-      
-      .next { grid-area: next; }
-      
-      .react { grid-area: react; }
-      
-      .tailwind { grid-area: tailwind; }
-      
-      .ts { grid-area: ts;  }
-      
-      .js { grid-area: js; }
-      
-      .redux { grid-area: redux; }
-      
-      .header { grid-area: header; }
-      
-      .boot { grid-area: boot; }
-      
-      .git { grid-area: git; }
 
-    /*! contact scetion */
-      #contact .links > div a{
-        
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        border-radius: 0.5rem;
+  main{
+    background-image: 
+      linear-gradient(to right, #2A1F00 0.01px, transparent 1px),
+      linear-gradient(to bottom, #2A1F00 0.01px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  section{
+    padding-block: 4rem;
+  }
+
+  #home, #skills, #projects, #contact {
+    scroll-margin-top: 64px;
+  }
+
+  .skills figure{
+    opacity: 0;
+    filter: blur(1rem);
+  }
+
+  .skills .parent { 
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(7, 8fr);
+    gap: 0.5rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". html html html . . . . . css css css ."
+      ". html html html . next next . . css css css ."
+      ". . . . boot boot . . . . . git git"
+      "ts ts header header header header header header header header header js js"
+      ". . header header header header header header header header header js js"
+      ". react react . . .  redux redux . tailwind tailwind . ."
+      ". react react . . . redux redux . . . . .";
+  }
+
+  .html { grid-area: html; }
+  .css { grid-area: css; }
+  .next { grid-area: next; }
+  .react { grid-area: react; }
+  .tailwind { grid-area: tailwind; }
+  .ts { grid-area: ts; }
+  .js { grid-area: js; }
+  .redux { grid-area: redux; }
+  .header { grid-area: header; }
+  .boot { grid-area: boot; }
+  .git { grid-area: git; }
+
+  #contact .links > div a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius: 0.5rem;
         cursor:pointer
-      }
-      .links .github{
-        width:25%;
-      }
-      .links .linkedin{
-        width: 75%;
-      }
-      .links .phone,
+  }
+
+  .links .github{
+    width:25%;
+  }
+  .links .linkedin{
+    width: 75%;
+  }
+  .links .phone,
       .links:has(.phone:hover) .gamil{
-        width: 40%;
-      }
-      .links .gmail,
-      .links .phone:hover{
-        width: 60%;
-      }
+    width: 40%;
+  }
+  .links .gmail,
+  .links .phone:hover{
+    width: 60%;
+  }
       /* hovering in github */
-      .links .github:hover{
-        width: 50%;
-    }
-    .links:has( .github:hover) .col-1,
-    .links:has(.linkedin:hover) .col-1{
-      height: 85%;
-    }
-    .links:has( .github:hover) .col-2,
-    .links:has(.linkedin:hover) .col-2{
-      height: 15%;
-    }
-      .links:has( .github:hover) .linkedin{
+  .links .github:hover{
+    width: 50%;
+  }
+  .links:has( .github:hover) .col-1,
+  .links:has(.linkedin:hover) .col-1{
+    height: 85%;
+  }
+  .links:has( .github:hover) .col-2,
+  .links:has(.linkedin:hover) .col-2{
+    height: 15%;
+  }
+  .links:has( .github:hover) .linkedin{
         width : 50%;
-      }
+  }
      /* hovre linkedin */
-     .links .linkedin:hover,
-     .links .gmail:hover{
-       width:85%;
-     }
-     .links:has(.phone:hover) .col-1,
-     .links:has(.phone:hover) .col-2,
-     .links:has(.gmail:hover) .col-1,
+  .links .linkedin:hover,
+  .links .gmail:hover{
+    width:85%;
+  }
+  .links:has(.phone:hover) .col-1,
+  .links:has(.phone:hover) .col-2,
+  .links:has(.gmail:hover) .col-1,
      .links:has(.gmail:hover) .col-2
      {
-       height: 50%;
-     }
-     .links:has(.gmail:hover) .phone{
-      width:15%;
-     }
-      /* hovering in every icons in css */
-      /* .github:hover{
-        grid-column:span 4;
-        grid-row:span 5;
-        background-color: aqua;
-      }
-      .links:has(.github:hover) .linkedin{
-        grid-column:span 5;
-        grid-row:span 5;
-      }
-      .links:has(.github:hover) .phone,
-      .links:has(.github:hover) .gmail{
-        grid-row:span 1;
-      } */
+    height: 50%;
+  }
+  .links:has(.gmail:hover) .phone{
+    width:15%;
+  }
 }
+
+.loading-logo path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.shape-float-1 {
+  animation: floatShape 6s ease-in-out infinite;
+}
+.shape-float-2 {
+  animation: floatShape 8s ease-in-out infinite reverse;
+}
+.shape-float-3 {
+  animation: floatShape 10s ease-in-out infinite 2s;
+}
+.shape-float-4 {
+  animation: floatShape 7s ease-in-out infinite 1s reverse;
+}
+
+@keyframes floatShape {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.1;
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(10px) rotate(180deg);
+    opacity: 0.15;
+  }
+  75% {
+    transform: translateY(-10px) rotate(270deg);
+    opacity: 0.2;
+  }
+}
+
+

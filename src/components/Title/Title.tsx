@@ -4,7 +4,7 @@ import { FaExclamation } from 'react-icons/fa'
 export default function Title({children,className}:{children:string,className?:string}) {
   return (
     <>
-           <h2 className={`header  mx-auto font-extrabold text-4xl md:text-7xl ${className}` }  >
+           <h2 className={`header  mx-auto font-extrabold text-2xl md:text-4xl ${className}` }  >
                               <p className="relative capitalize w-fit  text-gray-400 mx-auto">
                                 {children}
                                 <span className="after absolute right-full top-1/2 -translate-y-1/2 text-scolor ">
