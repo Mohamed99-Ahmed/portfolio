@@ -3,7 +3,6 @@ import imgProfile from "../../../public/imgs/profile.jpeg";
 import React, { useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import Loading from './../../app/loading';
 import Button from "../Button/Button";
 
 
@@ -13,20 +12,9 @@ export default function Header() {
     useEffect(()=>{
       // make all animation in context then when umount i will remove it by return
         const cxt = gsap.context(()=>{
-          const tl = gsap.timeline({
-            // Enable body scrolling of y axiis once the animation is finished
-            onComplete: () => {
-              document.documentElement.style.overflowY = 'scroll'; // Or 'scroll'
-              document.body.style.overflowY = 'scroll'; // Or 'scroll'
-            },
-          });
+          const tl = gsap.timeline();
           // display animation vertaially arrangment
-          tl.to(".loading",{
-            duration:4,
-            height:0,
-            overflow:"hidden"
-          })
-          .fromTo('.img-portf',{scale:0},{duration:0.5,scale:1,opacity:1,ease:'back.out(1.7)'})
+          tl.fromTo('.img-portf',{scale:0},{duration:0.5,scale:1,opacity:1,ease:'back.out(1.7)'})
           .to('.hey',{duration:0.2,transform:'skewY(0deg)',opacity:1,ease:'back.out(1.7)'})
             .to('.name',{duration:0.5,transform:'skewY(0deg)',opacity:1,ease:'back.out(1.7)'})
             .to('.job',{duration:0.2,transform:'skewY(0deg)',opacity:1,ease:'back.out(1.7)'})
@@ -38,9 +26,6 @@ export default function Header() {
       },[])
   return (
     <>
-     <div className="loading bg-[#120D16]  fixed inset-0   flex justify-center items-center z-[7000]"  >
-      <Loading></Loading>
-    </div>
     {/* header section */}
       <header
         id="home"

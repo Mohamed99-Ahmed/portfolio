@@ -22,12 +22,9 @@ export default function NavBar() {
         }`}
       >
         {/* button to open and close navbar */}
-        <button
-          className="right-2 z-[200] top-4 fixed md:hidden"
-          onClick={() => setOpenNav(!openNav)}
-        >
-          <Button>{openNav ? <IoCloseSharp /> : <HiBars2 />}</Button>
-        </button>
+        <div className="right-2 z-[200] top-4 fixed md:hidden">
+          <Button onClick={() => setOpenNav(!openNav)}>{openNav ? <IoCloseSharp /> : <HiBars2 />}</Button>
+        </div>
         {/* list anchors of sections   */}
         <ul
           className={`flex  md:flex-row h-screen md:h-auto  flex-col gap-8 justify-center  items-center overflow-hidden  `}

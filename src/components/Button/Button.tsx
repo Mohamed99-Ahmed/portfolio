@@ -1,9 +1,10 @@
 import React, { ReactElement } from 'react'
 
-export default function Button({children,className}:{children:string|ReactElement,className?:string}):React.ReactElement {
+export default function Button({children,className,onClick}:{children:string|ReactElement,className?:string,onClick?:()=>void}):React.ReactElement {
   return (
    /* From Uiverse.io by Itskrish01 */ 
 <button
+  onClick={onClick}
   className={`relative text-2xl cursor-pointer inline-flex h-12 active:scale-95 transistion overflow-hidden rounded-lg p-[1px] focus:outline-none ${className}`}
 >
   <span
