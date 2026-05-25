@@ -21,7 +21,7 @@ export default function NavBar() {
   const mobileMenuRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
+    const sections = document.querySelectorAll("section[id], header[id]");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -74,7 +74,7 @@ export default function NavBar() {
           </Link>
 
           <div className="md:hidden">
-            <Button onClick={() => setOpenNav(!openNav)}>
+            <Button onClick={() => setOpenNav(!openNav)} className="!text-xl !h-10">
               {openNav ? <IoCloseSharp /> : <HiBars2 />}
             </Button>
           </div>
@@ -96,7 +96,7 @@ export default function NavBar() {
                     href={link.href}
                     onClick={() => setOpenNav(false)}
                     data-cursor-grow
-                    className={`capitalize font-semibold text-2xl md:text-base transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-scolor after:transition-all after:duration-300 ${
+                    className={`capitalize font-semibold text-xl md:text-base transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-scolor after:transition-all after:duration-300 ${
                       isActive
                         ? "text-scolor after:w-full"
                         : "text-white/80 hover:text-scolor after:w-0 hover:after:w-full"

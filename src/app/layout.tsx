@@ -26,7 +26,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </head>
-      <body className={`${geist.className} bg-back text-gray-200`}>
+      <body className={`${geist.className} bg-back text-gray-200`} suppressHydrationWarning>
         <Cursor />
         {children}
       </body>

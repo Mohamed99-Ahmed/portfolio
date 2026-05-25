@@ -63,9 +63,9 @@ export default function Skills() {
       activeGroups.forEach((ag, idx) => {
         const startOffset = 30 + idx * 15;
         gsap.fromTo(ag.elements,
-          { opacity: 0, scale: 0.3, filter: "blur(1rem)" },
+          { opacity: 0, scale: 0.3 },
           {
-            opacity: 1, scale: 1, filter: "blur(0)",
+            opacity: 1, scale: 1,
             duration: 1.2,
             stagger: 0.15,
             ease: "back.out(1.7)",
@@ -158,7 +158,11 @@ export default function Skills() {
                   width={80}
                 />
               ) : (
-                <skill.icon className="w-12 h-12 md:w-16 md:h-16 text-scolor cursor-pointer" />
+                <skill.icon className="w-12 h-12 md:w-16 md:h-16 cursor-pointer" style={{
+                  color: skill.icon === SiMongodb ? "#47A248" :
+                         skill.icon === SiNodedotjs ? "#339933" :
+                         skill.icon === SiExpress ? "#666666" : "",
+                }} />
               )}
             </figure>
           );

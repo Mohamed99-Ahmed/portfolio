@@ -33,15 +33,7 @@ export default function Contact() {
         }
       );
 
-      links.forEach((link) => {
-        link.addEventListener("mouseenter", () => {
-          gsap.to(link, { scale: 1.1, duration: 0.3, ease: "power2.out" });
-        });
 
-        link.addEventListener("mouseleave", () => {
-          gsap.to(link, { scale: 1, duration: 0.3, ease: "power2.out" });
-        });
-      });
     });
 
     return () => ctx.revert();
@@ -53,13 +45,13 @@ export default function Contact() {
         <div className="absolute inset-0 bg-gradient-to-b from-back via-back/95 to-back pointer-events-none" />
         <div className="container relative z-10">
           <Title>contact</Title>
-          <section className="links p-6 rounded-md h-[350px] flex flex-col gap-2 text-4xl">
+          <section className="links p-6  mt-10 rounded-md h-[350px] flex flex-col gap-2 text-2xl border border-scolor/10">
             <div className="col-1 h-[75%] flex gap-2 transition-all duration-1000">
               <a
                 ref={(el) => { linksRef.current[0] = el; }}
                 target="_blank"
                 href="https://github.com/Mohamed99-Ahmed?tab=repositories"
-                className="github bg-gray-900 col-span-2 row-span-4 transition-all duration-1000"
+                className="github bg-gray-800 text-scolor col-span-2 row-span-4 transition-all duration-1000"
               >
                 <FaGithub />
               </a>
@@ -67,7 +59,7 @@ export default function Contact() {
                 ref={(el) => { linksRef.current[1] = el; }}
                 target="_blank"
                 href="https://www.linkedin.com/in/eng-mohamed-ahmed/"
-                className="linkedin bg-blue-500 col-span-7 row-span-4 transition-all duration-1000"
+                className="linkedin bg-gray-700 text-scolor col-span-7 row-span-4 transition-all duration-1000"
               >
                 <FaLinkedin />
               </a>
@@ -76,7 +68,7 @@ export default function Contact() {
               <a
                 ref={(el) => { linksRef.current[2] = el; }}
                 target="_blank"
-                className="phone bg-green-500 col-span-3 row-span-2 transition-all duration-1000"
+                className="phone bg-gray-700 text-scolor col-span-3 row-span-2 transition-all duration-1000"
                 href="tel:+0201033088054"
               >
                 <FaPhoneAlt />
@@ -84,7 +76,7 @@ export default function Contact() {
               <a
                 ref={(el) => { linksRef.current[3] = el; }}
                 target="_blank"
-                className="gmail bg-red-400 col-span-6 row-span-2 transition-all duration-1000"
+                className="gmail bg-gray-800 text-scolor col-span-6 row-span-2 transition-all duration-1000"
                 href="mailto:mohamed202029999@gmail.com"
               >
                 <BiLogoGmail />

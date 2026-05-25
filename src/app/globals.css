@@ -50,7 +50,6 @@ body {
 
   .skills figure{
     opacity: 0;
-    filter: blur(1rem);
   }
 
   .skills .parent { 
@@ -60,13 +59,13 @@ body {
     gap: 0.5rem;
     grid-auto-flow: row;
     grid-template-areas:
-      ". html html html . . . . . css css css ."
+      ". html html html . . boot boot . css css css ."
       ". html html html . next next . . css css css ."
-      ". . . . boot boot . . . . . git git"
+      ". . . . . . . mongo mongo . . git git"
       "ts ts header header header header header header header header header js js"
       ". . header header header header header header header header header js js"
-      ". react react . . .  redux redux . tailwind tailwind . ."
-      ". react react . . . redux redux . . . . .";
+      "react react . . . . node node . express express . ."
+      ". . . redux redux .  . . tailwind tailwind. . . ";
   }
 
   .html { grid-area: html; }
@@ -80,6 +79,9 @@ body {
   .header { grid-area: header; }
   .boot { grid-area: boot; }
   .git { grid-area: git; }
+  .mongo { grid-area: mongo; }
+  .node { grid-area: node; }
+  .express { grid-area: express; }
 
   #contact .links > div a{
     display:flex;

@@ -6,6 +6,7 @@ import project3 from "../../../public/imgs/project-3.png"
 import project4 from "../../../public/imgs/project-4.png"
 import project5 from "../../../public/imgs/project-5.png"
 import project6 from "../../../public/imgs/project-6.png"
+import carecomm from "../../../public/imgs/carecomm.png"
 import skill1 from "../../../public/imgs/skill-1.png"
 import skill3 from "../../../public/imgs/skill-3.png"
 import skill4 from "../../../public/imgs/skill-4.png"
@@ -16,6 +17,7 @@ import skill8 from "../../../public/imgs/skill-8.png"
 import skill9 from "../../../public/imgs/skill-9.png"
 import skill10 from "../../../public/imgs/skill-10.png"
 import Image, { StaticImageData } from 'next/image'
+import { SiMongodb, SiExpress, SiGraphql } from "react-icons/si";
 import { gsap, Flip } from "@/lib/gsap"
 import Title from '../Title/Title';
 
@@ -24,11 +26,18 @@ type project = {
   description: string;
   src: StaticImageData | string;
   alt: string;
-  tools: (StaticImageData | string)[];
+  tools: (StaticImageData | string | React.ElementType)[];
   link: string;
 }
 
 const projects: project[] = [
+    {
+    name: "CareComm",
+    description: "Automated end-to-end social media workflows, including post scheduling, publishing, and analytics aggregation across platforms like Facebook, Instagram, X and TikTok, boosting marketing team productivity and data accuracy",
+    src: carecomm, alt: "CareComm social media automation",
+    tools: [SiMongodb, SiExpress, SiGraphql],
+    link: "https://staging.carecomm.com",
+  },
   {
     name: "Buy Ecommerce",
     description: "Buy Ecmmerce Application build by ReactJs library and tailwind css easy way to shopping based on api for everything (signup, login , wishlist, carts,payment with Amazing interface for Good user experience",
@@ -70,7 +79,7 @@ const projects: project[] = [
     src: project5, alt: "yemmy app from many of recipies",
     tools: [skill1, skill3, skill9, skill10],
     link: "https://mohamed99-ahmed.github.io/Meals/",
-  },
+  }
 ];
 
 export default function Projects() {
@@ -93,7 +102,7 @@ export default function Projects() {
         scrollTrigger: {
           trigger: ".slider",
           start: "top top",
-          end: () => `+=${projects.length * window.innerWidth}`,
+          end: () => `+=${projects.length * 300}`,
           scrub: 1,
           pin: true,
           id: "projects-scroll",
@@ -188,7 +197,7 @@ export default function Projects() {
             {projects.map((project, ind) => (
               <section
                 key={ind}
-                className="child md:w-[70%] w-[90%] flex items-center shrink-0 grow-0"
+                className="child md:w-[70%] w-[90%] flex items-center shrink-0 grow-0 first:ml-8 md:first:ml-12"
                 style={{ perspective: "800px" }}
               >
                 <a
@@ -204,17 +213,25 @@ export default function Projects() {
                   className="border-2 group/parent border-gray-600 hover:border-scolor hover:scale-105 transition-all duration-700 rounded-md p-4 w-[80%] md:w-[60%] flex flex-col justify-between gap-1 md:gap-2 cursor-pointer"
                   style={{ transformStyle: "preserve-3d" }}
                 >
-                  <Image src={project.src} className="w-full object-cover h-[280px] group-hover/parent:object-scale-down" alt={project.alt} />
-                  <article className="mb-4 min-h-[120px]">
+                  <Image src={project.src} className="w-full object-cover h-[120px] md:h-[180px] group-hover/parent:object-scale-down" alt={project.alt} />
+                  <article className="mb-4">
                     <h3 className="text-xl font-bold">{project.name}</h3>
                     <p className="text-gray-400 line-clamp-2 sm:line-clamp-4 md:group-hover/parent:line-clamp-none">{project.description}</p>
                   </article>
                   <footer className="flex justify-between items-start flex-col sm:flex-row gap-2 border-t-2 pt-4 border-gray-400">
                     <p className="capitalize">tools i used :</p>
                     <figure className="flex gap-2">
-                      {project.tools.map((tool, i) => (
-                        <Image className="w-5 inline sm:w-7" src={tool} key={i} alt={`tool ${i}`} />
-                      ))}
+                      {project.tools.map((Tool, i) => {
+                        const brandColor = 
+                          Tool === SiMongodb ? "#47A248" :
+                          Tool === SiExpress ? "#666666" :
+                          Tool === SiGraphql ? "#E10098" : "";
+                        return typeof Tool === "function" ? (
+                          <Tool className="w-5 h-5 inline sm:w-7 sm:h-7" style={{ color: brandColor }} key={i} />
+                        ) : (
+                          <Image className="w-5 inline sm:w-7" src={Tool} key={i} alt={`tool ${i}`} />
+                        );
+                      })}
                     </figure>
                   </footer>
                 </a>

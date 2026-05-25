@@ -1,5 +1,5 @@
 "use client"
-import imgProfile from "../../../public/imgs/profile.jpeg";
+import imgProfile from "../../../public/imgs/Mohamed personal4.png";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
@@ -217,7 +217,7 @@ export default function Header() {
           <Image
             src={imgProfile}
             ref={imageRef}
-            className="img-portf w-[300px] opacity-0 rounded-full overflow-hidden"
+            className="img-portf w-[200px] md:w-[400px] opacity-0 rounded-full overflow-hidden"
             alt="profile img"
           />
         </figure>
@@ -227,8 +227,7 @@ export default function Header() {
           <h1 className="name text-scolor font-bold relative text-3xl md:text-4xl opacity-0">
             Mohamed Ahmed
           </h1>
-          <p className="job tracking-[2px] text-gray-400 opacity-0">Frontend Developer</p>
-          <p className="tagline text-lg text-mcolor font-light tracking-widest">Frontend Developer</p>
+          <p className="job text-lg tracking-[2px] text-gray-400 opacity-0">MERN Stack Developer</p>
           <p className="text-sm md:text-base font-light max-w-[80%] mx-auto leading-relaxed">
             {"i can help you to make your project with amazing user interface i have experience in Frontend"
               .split("")
@@ -242,15 +241,7 @@ export default function Header() {
         </article>
       </div>
 
-      <div
-        ref={scrollDownRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs text-gray-500 tracking-widest uppercase">Scroll</span>
-        <svg className="w-5 h-5 text-scolor animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
+ 
     </header>
   );
 }
