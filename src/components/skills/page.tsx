@@ -152,7 +152,7 @@ export default function Skills() {
             >
               {'src' in skill ? (
                 <Image
-                  src={skill.src}
+                  src={skill.src!}
                   alt={skill.alt}
                   className="w-16 md:w-20 cursor-pointer"
                   width={80}

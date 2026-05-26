@@ -376,7 +376,7 @@ export default function Projects() {
                     <Image
                       key={i}
                       className="w-8 h-8 object-contain"
-                      src={Tool as any}
+                      src={Tool as string}
                       alt={`tool-${i}`}
                       width={32}
                       height={32}

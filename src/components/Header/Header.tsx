@@ -180,10 +180,10 @@ export default function Header() {
       gsap.to(figureEl, { rotationY: 0, rotationX: 0, duration: 0.8, ease: "power3.out" });
     };
 
-    figureEl.addEventListener("mousemove", onMove as any);
+    figureEl.addEventListener("mousemove", onMove as EventListener);
     figureEl.addEventListener("mouseleave", onLeave);
     return () => {
-      figureEl.removeEventListener("mousemove", onMove as any);
+      figureEl.removeEventListener("mousemove", onMove as EventListener);
       figureEl.removeEventListener("mouseleave", onLeave);
     };
   }, [mounted]);
