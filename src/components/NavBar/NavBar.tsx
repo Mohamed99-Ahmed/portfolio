@@ -5,6 +5,7 @@ import { HiBars2 } from "react-icons/hi2";
 import Link from "next/link";
 import { IoCloseSharp } from "react-icons/io5";
 import { gsap } from "@/lib/gsap";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const links = [
   { href: "/#home", label: "home" },
@@ -73,7 +74,8 @@ export default function NavBar() {
             MA
           </Link>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <Button onClick={() => setOpenNav(!openNav)} className="!text-xl !h-10">
               {openNav ? <IoCloseSharp /> : <HiBars2 />}
             </Button>
@@ -108,6 +110,11 @@ export default function NavBar() {
               );
             })}
           </ul>
+
+          {/* Desktop theme toggle */}
+          <div className="hidden md:flex items-center">
+            <ThemeToggle />
+          </div>
         </div>
       </nav>
     </>

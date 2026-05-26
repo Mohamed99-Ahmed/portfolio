@@ -1,12 +1,18 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 
 export default function Cursor() {
+  const [mounted, setMounted] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const trailRef = useRef<HTMLDivElement>(null);
 
+  // Step 1: trigger mount so the cursor divs render
+  useEffect(() => { setMounted(true); }, []);
+
+  // Step 2: set up GSAP only after mounted=true (so refs point to real DOM nodes)
   useEffect(() => {
+    if (!mounted) return;
     const cursor = cursorRef.current;
     const trail = trailRef.current;
     if (!cursor || !trail) return;
@@ -47,7 +53,9 @@ export default function Cursor() {
       });
       document.body.style.cursor = "";
     };
-  }, []);
+  }, [mounted]);
+
+  if (!mounted) return null;
 
   return (
     <>
