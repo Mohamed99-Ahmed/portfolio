@@ -22,7 +22,7 @@ export default {
       colors: {
         back: "#120D16",
         mcolor: "#7B52A1",
-        scolor : "#31C38E",
+        scolor : "#FBBF24",
       },
       spacing:{
         nav:'calc(100vh - 68px)'

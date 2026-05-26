@@ -10,7 +10,7 @@ export default function Home() {
    
    
     <NavBar/>
-    <main className='max-w-[100vw]'>
+    <main className='max-w-[100vw] pt-16'>
       <Header/>
       <Skills/>
       <Projects/>
