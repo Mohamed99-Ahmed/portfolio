@@ -2,7 +2,7 @@ import { Geist } from "next/font/google";
 import './globals.css';
 import Cursor from "@/components/Cursor/Cursor";
 import { ThemeProvider } from "@/hooks/useTheme";
-
+import Script from "next/script";
 const geist = Geist({
   subsets: ['latin'],
   weight: ["100", "300", "400", "500", "700", "900"],
@@ -37,6 +37,10 @@ export default function RootLayout({
 })();`,
           }}
         />
+          <Script
+    src="/newrelic.js"
+    strategy="beforeInteractive"
+  />
       </head>
       <body className={`${geist.className} bg-back text-gray-200`} suppressHydrationWarning>
         <ThemeProvider>
